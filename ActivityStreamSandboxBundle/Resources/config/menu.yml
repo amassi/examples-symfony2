@@ -1,0 +1,25 @@
+services:
+    activity_stream_sandbox.menu_builder: 
+        class: GH\ActivityStreamSandboxBundle\Navbar\MenuBuilder
+        arguments: ["@knp_menu.factory"]
+
+    activity_stream_sandbox.main_menu_builder:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory_service: activity_stream_sandbox.menu_builder
+        factory_method: createMainMenu
+        arguments: ["@request"]
+        scope: request # needed as we have the request as a dependency here
+        tags:
+            - { name: knp_menu.menu, alias: activity_stream_sandbox_navbar } # The alias is what is used to retrieve the menu
+         
+    activity_stream_sandbox.main.navabar:
+            class: %mopa_bootstrap.navbar.generic%
+            arguments:
+                # first argument: a named array of menues:
+                - { menu: @activity_stream_sandbox.main_menu_builder= }
+                - {}
+                # third argument: a named array of options
+                - { fixedTop: true, isFluid: true, template: GHActivityStreamSandboxBundle:ActivityStreamSandbox:navbar.html.twig }
+            tags:
+                # The alias is used to retrieve the navbar in templates
+                - { name: mopa_bootstrap.navbar, alias: activity_stream_sandbox_navbar }

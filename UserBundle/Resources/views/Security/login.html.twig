@@ -1,0 +1,36 @@
+{% extends 'GHActivityStreamSandboxBundle::layout.html.twig' %}
+
+{% block headline %}
+	{% trans %}Connexion{% endtrans %}
+{% endblock %}
+{% block content_row %}
+
+ <div class="container">
+{% if error %}
+    <div class="alert alert-error">{{ error|trans }}</div>
+{% endif %}
+
+<form class="form-horizontal" action="{{ path("fos_user_security_check") }}" method="post">
+	<div class="control-group">
+		<label class="control-label" for="username">{% trans %}form.email{% endtrans %}</label>
+		<div class="controls">
+			<input type="text" id="username" name="_username" value="" />
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="password">{% trans %}form.password{% endtrans %}</label>
+		<div class="controls">
+			<input type="password" id="password" name="_password" value="" />
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<div class="controls">
+			<button type="submit" class="btn">{% trans %}sign.in{% endtrans %}</button>
+		</div>
+	</div>   
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+</form>
+
+</div>
+{% endblock %}

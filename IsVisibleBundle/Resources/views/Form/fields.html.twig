@@ -1,0 +1,16 @@
+{% block gh_is_visible_widget %}
+    {% spaceless %}
+    {{ form_widget(form[name]) }}
+	{{ form_widget(form[name ~ '_visible']) }}
+    {% endspaceless %}
+{% endblock%}
+
+{% block gh_is_visible_errors %}
+{% spaceless %}
+    {% if errors|length > 0 %}
+        {% for error in errors %}
+            <span class="text-error">{{ error.messageTemplate|trans(error.messageParameters) }}</span>
+        {% endfor %}
+    {% endif %}
+{% endspaceless %}
+{% endblock%}

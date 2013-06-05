@@ -1,0 +1,19 @@
+{% extends 'GHActivityStreamSandboxBundle::layout.html.twig' %}
+
+{% block headline %}Project creation{% endblock headline %}
+{% block content_content %}
+    <form action="{{ path('project_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button type="submit">Create</button>
+        </p>
+    </form>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('project') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

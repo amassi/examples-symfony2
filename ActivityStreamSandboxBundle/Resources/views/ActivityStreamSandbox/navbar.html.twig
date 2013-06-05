@@ -1,0 +1,18 @@
+{% block navbar %}
+<div class="navbar topnav">
+	<div class="navbar-inner">
+		<div class="container">
+		            <a class="brand activity_stream_icon" href="#">
+		            	&nbsp;
+		            </a>
+		
+					{{ navbar.getMenu('menu') ?
+					        knp_menu_render(navbar.getMenu('menu'), {
+					            'currentClass': 'active',
+					            'ancestorClass': 'active',
+					            'allow_safe_labels': true}) : '' }}	 	
+	 	</div>
+	</div>
+</div>
+{% endblock %}
+

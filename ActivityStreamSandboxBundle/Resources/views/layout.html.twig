@@ -1,0 +1,26 @@
+{% extends 'MopaBootstrapBundle::base_initializr.html.twig' %}
+
+{% block title%}activity stream sandbox bundle{% endblock %}
+
+{% block head_style %}
+	{% stylesheets
+	       '@MopaBootstrapBundle/Resources/public/less/mopabootstrapbundle.less'
+	       '@MopaBootstrapBundle/Resources/public/css/mopabootstrapbundle.css'
+	       'bootstrap/css/bootstrap.min.css'
+	       'bundles/ghactivitystreamsandbox/css/style.css'
+	%}
+	<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+	{% endstylesheets %}
+{% endblock head_style %}
+
+{% block navbar %}
+	{{ mopa_bootstrap_navbar('activity_stream_sandbox_navbar') }}
+{% endblock navbar %}
+
+{% block footer %}
+	<p>&copy; <a href="#">activity-stream</a> 2013</p>
+{% endblock footer %}
+
+{% block content_sidebar %}
+	<h2>Activities</h2>
+{% endblock content_sidebar %}
